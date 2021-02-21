@@ -18,7 +18,7 @@ namespace ProjectPBBGPlugins
         public float MaxExperience = 100;
 
         [JsonIgnore]
-        public Inventory _AccountInventory = null;
+        public Account _Account = null;
 
         public virtual void Action() { }
         public void Update()

@@ -51,10 +51,6 @@ namespace ProjectPBBGPlugins
                     AccountManager.AddAccount(_newAccount);
                     AccountManager.Save();
 
-                    //Add starter items to the account
-                    AccountManager.GetAccount(_newAccount.Username).Inventory.AddItem(Database._ItemDatabase.GetItemByName("Starter Giftbox"));
-                    AccountManager.GetAccount(_newAccount.Username).SaveInventory();
-
                     //Tell them they registered.
                     PKT_SERVER_ACCOUNTSUCCESS _newRegisterMessage = new PKT_SERVER_ACCOUNTSUCCESS("Registered, welcome to Project PBBG <color=white>" + registerInfo.Username + "</color>!");
                     e.Client.SendMessage(Message.Create((ushort)Pkt.PKT_SERVER_ACCOUNTSUCCESS, _newRegisterMessage), SendMode.Reliable);

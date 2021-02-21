@@ -49,23 +49,9 @@ namespace ProjectPBBGPlugins
 
         void BuildItemDatabase(object sender, CommandEventArgs e)
         {
-            Tool newTool = new Tool("Wooden Pickaxe", false, true, "Pickaxe",
-                new List<ItemSuffix>
-                {
-                    Database._ItemSuffixDatabase.GetBaseSuffix("_PhysicalDamage"),
-                    Database._ItemSuffixDatabase.GetBaseSuffix("_MiningPower")
-                }
-            );
-            Weapon newWeapon = new Weapon("Zombie Arm", true, true, "Crafting Material, Weapon, Consumable",
-                new List<ItemSuffix>
-                {
-                    Database._ItemSuffixDatabase.GetBaseSuffix("_PhysicalDamage"),
-                    Database._ItemSuffixDatabase.GetBaseSuffix("_HealPower")
-                }
-            );
+            Item newOre = new Item("Copper Ore", false, false, "Crafting Material, Ore");
 
-            Database._ItemDatabase.AddItem(newTool);
-            Database._ItemDatabase.AddItem(newWeapon);
+            Database._ItemDatabase.AddItem(newOre);
             Database._ItemDatabase.Save();
         }
 

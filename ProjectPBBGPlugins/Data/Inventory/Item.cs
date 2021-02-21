@@ -25,20 +25,17 @@ namespace ProjectPBBGPlugins
         public bool isUsable { get; set; }
         public bool isEquippable { get; set; }
 
+        public int StackSize = 1;
+
         public void Use(Account account) { 
         
 
         }
 
-        public string ApplicableType = "Consumable";
-
-        public List<ItemSuffix> BaseSuffixes = new List<ItemSuffix>();
-        public List<ItemSuffix> Suffixes = new List<ItemSuffix>();
-
         public Item() { }
-        public Item(string name, bool isusable, bool isequippable, string applicabletype, List<ItemSuffix> basesuffixes)
+        public Item(string name, bool isusable, bool isequippable, string applicabletype)
         {
-            Name = name; isUsable = isusable; isEquippable = isequippable; ApplicableType = applicabletype; BaseSuffixes = basesuffixes;
+            Name = name; isUsable = isusable; isEquippable = isequippable;
         }
     }
 
@@ -46,13 +43,13 @@ namespace ProjectPBBGPlugins
     [JsonObject(MemberSerialization.OptOut)]
     public class Weapon : Item
     {
-        public string DamageType = "Physical";
+
         public Weapon() { 
         
         }
-        public Weapon(string name, bool isusable, bool isequippable, string applicabletype, List<ItemSuffix> basesuffixes)
+        public Weapon(string name, bool isusable, bool isequippable, string applicabletype)
         {
-            Name = name; isUsable = isusable; isEquippable = isequippable; ApplicableType = applicabletype; BaseSuffixes = basesuffixes;
+            Name = name; isUsable = isusable; isEquippable = isequippable;
         }
     }
 
@@ -61,9 +58,9 @@ namespace ProjectPBBGPlugins
     public class Tool : Weapon
     {
         public Tool() { }
-        public Tool(string name, bool isusable, bool isequippable, string applicabletype, List<ItemSuffix> basesuffixes)
+        public Tool(string name, bool isusable, bool isequippable, string applicabletype)
         {
-            Name = name; isUsable = isusable; isEquippable = isequippable; ApplicableType = applicabletype; BaseSuffixes = basesuffixes;
+            Name = name; isUsable = isusable; isEquippable = isequippable;
         }
     }
 }

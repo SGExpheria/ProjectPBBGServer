@@ -11,6 +11,7 @@ namespace ProjectPBBGPlugins
     {
         public string Name;
         public Item Ore;
+        public int Amount;
         public float Experience;
         public Mining_Ore() { }
         public Mining_Ore(string name) { Name = name; }

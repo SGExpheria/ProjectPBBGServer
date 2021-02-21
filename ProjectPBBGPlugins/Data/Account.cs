@@ -28,6 +28,8 @@ namespace ProjectPBBGPlugins
         public string CityName;
 
         [JsonIgnore]
+        public Skill CurrentSkill = null;
+        [JsonIgnore]
         public List<Skill> Skills = new List<Skill>();
 
         [JsonIgnore]
@@ -99,14 +101,34 @@ namespace ProjectPBBGPlugins
             if (!isSkillsSetup)
                 SetupSkills();
 
-            Debug.Log("Ticked account " + Username, DebugColors.SavedColor);
+            if (_Inventory == null)
+                _Inventory = Inventory;
+
+            if (CurrentSkill != null)
+            {
+                CurrentSkill.Action();
+            }
+            else
+            {
+                Skill_Mining test = new Skill_Mining();
+                test.Name = "Mining";
+                test.SkillOre = new Mining_Ore();
+                test.SkillOre.Ore = Database._ItemDatabase.GetItemByName("Copper Ore");
+                test.SkillOre.Experience = 3;
+                test.SkillOre.Amount = 1;
+                test._Account = this;
+                CurrentSkill = test;
+                CurrentSkill.Action();
+            }
+
+            Save();
         }
 
         public void SetupSkills()
         {
             foreach (Skill skill in Skills)
             {
-                skill._AccountInventory = this.Inventory;
+                skill._Account = this;
             }
             isSkillsSetup = true;
         }

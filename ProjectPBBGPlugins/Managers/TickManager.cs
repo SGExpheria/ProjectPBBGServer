@@ -14,7 +14,7 @@ namespace ProjectPBBGPlugins
 
         private static Thread _TickThread = new Thread(new ThreadStart(Update));
         public static double _Ticks = 0;
-        public static int _TickRate = 1;
+        public static int _TickRate = 5;
 
         public static void Init()
         {

@@ -48,7 +48,6 @@ namespace ProjectPBBGPlugins
                 Item _newItem = new Item();
                 _newItem.ID = e.Reader.ReadInt32();
                 _newItem.Name = e.Reader.ReadString();
-                _newItem.ApplicableType = e.Reader.ReadString();
                 _ItemDatabase.Add(_newItem);
             }
         }
@@ -60,7 +59,6 @@ namespace ProjectPBBGPlugins
             {
                 e.Writer.Write(_item.ID);
                 e.Writer.Write(_item.Name);
-                e.Writer.Write(_item.ApplicableType);
             }
         }
 
