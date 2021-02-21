@@ -18,14 +18,17 @@ namespace ProjectPBBGPlugins
         public static ItemDatabase _ItemDatabase = new ItemDatabase();
         public static SuffixDatabase _ItemSuffixDatabase = new SuffixDatabase();
         public static ClassDatabase _ClassDatabase = new ClassDatabase();
+        public static SkillDatabase _SkillDatabase = new SkillDatabase();
 
         public Database(PluginLoadData pluginLoadData) : base(pluginLoadData)
         {
-            AccountManager.Load();
             _CityDatabase.Load();
             _ClassDatabase.Load();
             _ItemSuffixDatabase.Load();
             _ItemDatabase.Load();
+            _SkillDatabase.Load();
+
+            AccountManager.Load();
         }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="Data\Databases\CityDatabase.cs" />
     <Compile Include="Data\Databases\ClassDatabase.cs" />
     <Compile Include="Data\Databases\ItemDatabase.cs" />
+    <Compile Include="Data\Databases\SkillDatabase.cs" />
     <Compile Include="Data\Databases\SuffixDatabase.cs" />
     <Compile Include="Data\Inventory\Inventory.cs" />
     <Compile Include="Data\Inventory\InventoryInterfaces.cs" />

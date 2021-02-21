@@ -14,6 +14,7 @@ namespace ProjectPBBGPlugins
         public string Name;
 
         public int Level = 1;
+        public int MaxLevel = 99;
         public float CurrentExperience;
         public float MaxExperience = 100;
 
@@ -34,5 +35,8 @@ namespace ProjectPBBGPlugins
                 Level++;
             }
         }
+
+        public Skill() { }
+        public Skill(string name) { Name = name; }
     }
 }

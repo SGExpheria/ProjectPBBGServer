@@ -105,21 +105,7 @@ namespace ProjectPBBGPlugins
                 _Inventory = Inventory;
 
             if (CurrentSkill != null)
-            {
                 CurrentSkill.Action();
-            }
-            else
-            {
-                Skill_Mining test = new Skill_Mining();
-                test.Name = "Mining";
-                test.SkillOre = new Mining_Ore();
-                test.SkillOre.Ore = Database._ItemDatabase.GetItemByName("Copper Ore");
-                test.SkillOre.Experience = 3;
-                test.SkillOre.Amount = 1;
-                test._Account = this;
-                CurrentSkill = test;
-                CurrentSkill.Action();
-            }
 
             Save();
         }

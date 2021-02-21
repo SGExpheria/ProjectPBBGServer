@@ -19,6 +19,7 @@ namespace ProjectPBBGPlugins
             new Command("BuildItemDatabase", "", "BuildItemDatabase", BuildItemDatabase),
             new Command("BuildItemSuffixDatabase", "", "BuildItemSuffixDatabase", BuildItemSuffixDatabase),
             new Command("BuildClassDatabase", "", "BuildClassDatabase", BuildClassDatabase),
+            new Command("BuildSkillDatabase", "", "BuildSkillDatabase", BuildSkillDatabase),
             new Command("BuildCityDatabase", "", "BuildCityDatabase", BuildCityDatabase)
         };
 
@@ -63,6 +64,20 @@ namespace ProjectPBBGPlugins
 
             Database._CityDatabase.AddCity(newCity);
             Database._CityDatabase.Save();
+        }
+
+        void BuildSkillDatabase(object sender, CommandEventArgs e)
+        {
+            List<Skill> _SkillDatabase = new List<Skill>
+            {
+                new Skill_Mining("Mining"),
+                new Skill("Woodcutting")
+            };
+            foreach (Skill _Skill in _SkillDatabase)
+            {
+                Database._SkillDatabase.AddSkill(_Skill);
+                Database._SkillDatabase.Save();
+            }
         }
 
         void BuildItemSuffixDatabase(object sender, CommandEventArgs e)
