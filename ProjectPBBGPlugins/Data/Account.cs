@@ -98,6 +98,8 @@ namespace ProjectPBBGPlugins
         {
             if (!isSkillsSetup)
                 SetupSkills();
+
+            Debug.Log("Ticked account " + Username, DebugColors.SavedColor);
         }
 
         public void SetupSkills()

@@ -25,10 +25,9 @@ namespace ProjectPBBGPlugins
         public override bool ThreadSafe => false;
         public override Version Version => new Version(1, 0, 0);
 
-        public static ItemDatabase _ItemDatabase = new ItemDatabase();
-
         public ServerMainManager(PluginLoadData pluginLoadData) : base (pluginLoadData)
         {
+            TickManager.Init();
             ClientManager.ClientConnected += OnClientConnected;
             ClientManager.ClientDisconnected += OnClientDisconnect;
         }
@@ -42,7 +41,10 @@ namespace ProjectPBBGPlugins
         public void OnClientDisconnect(object sender, ClientDisconnectedEventArgs e)
         {
             if (AccountManager.ActiveAccounts.ContainsKey(e.Client))
+            {
+                TickManager._Tick -= AccountManager.ActiveAccounts[e.Client].Tick;
                 AccountManager.ActiveAccounts.Remove(e.Client);
+            }
         }
 
         void BuildItemDatabase(object sender, CommandEventArgs e)

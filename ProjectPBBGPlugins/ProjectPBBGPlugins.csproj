@@ -73,6 +73,7 @@
     <Compile Include="Managers\ChatManager.cs" />
     <Compile Include="Managers\Debug\DebugManager.cs" />
     <Compile Include="Managers\ServerManager.cs" />
+    <Compile Include="Managers\TickManager.cs" />
     <Compile Include="Network\Packets.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="Plugins\AccountPlugin.cs" />
