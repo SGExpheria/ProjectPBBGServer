@@ -81,6 +81,7 @@ namespace ProjectPBBGPlugins
                     }
 
                     AccountManager.LoginAccount(e.Client, AccountManager.GetAccount(loginInfo.Username));
+                    AccountManager.ActiveAccounts[e.Client].NetID = e.Client;
                     TickManager._Tick += AccountManager.ActiveAccounts[e.Client].Tick;
 
                     if (AccountManager.GetAccount(loginInfo.Username).isNew)

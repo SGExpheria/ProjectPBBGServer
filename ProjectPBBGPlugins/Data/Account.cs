@@ -6,11 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+using DarkRift;
+using DarkRift.Server;
+
 namespace ProjectPBBGPlugins
 {
     [Serializable]
     public class Account
     {
+        [JsonIgnore]
+        public IClient NetID;
+
         public int ID;
 
         public string Username;
@@ -25,7 +31,7 @@ namespace ProjectPBBGPlugins
         [JsonIgnore]
         public bool isSkillsSetup = false;
 
-        public string CityName;
+        public string CityName = "Coral Island";
 
         [JsonIgnore]
         public Skill CurrentSkill = null;
@@ -33,7 +39,11 @@ namespace ProjectPBBGPlugins
         public List<Skill> Skills = new List<Skill>();
 
         [JsonIgnore]
-        public City City;
+        public City City { 
+            get {
+                return Database._CityDatabase.GetCityByName(CityName);
+            }
+        }
 
         [JsonIgnore]
         private Inventory _Inventory = null;
@@ -107,6 +117,9 @@ namespace ProjectPBBGPlugins
             if (CurrentSkill != null)
                 CurrentSkill.Action();
 
+            //Client Updates
+            ClientInventoryUpdate();
+
             Save();
         }
 
@@ -117,6 +130,13 @@ namespace ProjectPBBGPlugins
                 skill._Account = this;
             }
             isSkillsSetup = true;
+        }
+
+        //Client Updates
+        public void ClientInventoryUpdate()
+        {
+            PKT_UPDATE_PLAYERINVENTORY _InvUpdate = new PKT_UPDATE_PLAYERINVENTORY(Inventory.Items);
+            NetID.SendMessage(Message.Create((ushort)Pkt.PKT_UPDATE_PLAYERINVENTORY, _InvUpdate), SendMode.Reliable);
         }
 
         public Account() { }
